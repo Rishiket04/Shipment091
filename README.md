@@ -127,25 +127,23 @@ erDiagram
         VARCHAR WarehouseID FK
     }
     ORDERS {
-        VARCHAR PackageID FK
-        VARCHAR SenderID FK
-        VARCHAR ReceiverID FK
+        VARCHAR PackageID PK
+        VARCHAR SenderID PK
+        VARCHAR ReceiverID PK
         DATETIME ShippingDate
         DECIMAL ShippingCost
         DATETIME PromisedTime
-        PK (PackageID, SenderID, ReceiverID)
     }
     LOC_OF_PKG {
-        VARCHAR PackageID FK
-        VARCHAR WarehouseID FK
+        VARCHAR PackageID PK
+        VARCHAR WarehouseID PK
         DATETIME Start_timestamp
         DATETIME End_timestamp
-        PK (PackageID, WarehouseID)
     }
     WORKS {
-        VARCHAR EmployeeID PK FK
-        VARCHAR TruckID FK
-        VARCHAR PlaneID FK
+        VARCHAR EmployeeID PK
+        VARCHAR TruckID
+        VARCHAR PlaneID
     }
 
     CUSTOMER ||--o{ ACCOUNT         : has
@@ -175,9 +173,7 @@ erDiagram
     EMPLOYEE ||--o{ WORKS           : assigned
     TRUCK    ||--o{ WORKS           : includes
     PLANE    ||--o{ WORKS           : includes
-```
 
----
 
 ## Normalization
 
